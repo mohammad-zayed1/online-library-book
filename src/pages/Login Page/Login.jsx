@@ -7,21 +7,16 @@ export const Login = () => {
     password: "",
   });
 
- 
-
   const handleChange = (event) => {
     const { name, value } = event.target;
 
     setLoginData((prevData) => ({ ...prevData, [name]: value }));
   };
 
- 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(loginData);
     // const { email, password } = loginData;
-
 
     // if (!email || !password) {
     //   setIsEmpty(true);
@@ -136,5 +131,3 @@ export const Login = () => {
     </section>
   );
 };
-
-   

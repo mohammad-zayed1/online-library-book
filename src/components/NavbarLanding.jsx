@@ -1,3 +1,5 @@
+
+import { Link } from "react-router-dom";
 export const NavbarLanding = () => {
   return (
     <div className="navbar bg-base-100">
@@ -26,9 +28,9 @@ export const NavbarLanding = () => {
             <li>
               <a>Home</a>
             </li>
-            <li>
+            {/* <li>
               <a href="#about">About Us</a>
-            </li>
+            </li> */}
             <li>
               <a href="#services">Services</a>
             </li>
@@ -74,9 +76,9 @@ export const NavbarLanding = () => {
             <a href="#home">Home</a>
           </li>
 
-          <li>
+          {/* <li>
             <a href="#about">About Us</a>
-          </li>
+          </li> */}
           <li>
             <a href="#services">Services</a>
           </li>
@@ -114,9 +116,9 @@ export const NavbarLanding = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn bg-primary border-none outline-none text-white hover:bg-primary">
+        <Link to="/login" className="btn bg-primary border-none outline-none text-white hover:bg-primary">
           Get started
-        </a>
+        </Link>
       </div>
     </div>
   );

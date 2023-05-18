@@ -1,11 +1,11 @@
 
-
+import Img from '../assets/img/moh.jpg';
 
 export const NavbarHome = ()=>{
     return (
       <div className="navbar bg-base-100 fixed top-0 shadow-sm z-50">
         <div className="flex-1">
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a className="btn btn-ghost normal-case text-xl">Kitabk</a>
         </div>
         <div className="flex-none">
           <div className="dropdown dropdown-end">
@@ -46,7 +46,7 @@ export const NavbarHome = ()=>{
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                <img src={Img} />
               </div>
             </label>
             <ul
