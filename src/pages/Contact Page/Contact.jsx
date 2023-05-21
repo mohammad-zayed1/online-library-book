@@ -3,7 +3,7 @@
 
 export const Contact = ()=>{
     return (
-      <section className="bg-white flex justify-center items-center dark:bg-gray-900 h-screen login-page-bg ">
+      <section className="bg-white flex justify-center items-center dark:bg-gray-900 h-screen login-page-bg">
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md bg-white rounded-lg shadow-md">
           <h2 className="mb-4 text-4xl tracking-tight text-center text-primary dark:text-white">
             Contact Us
@@ -56,7 +56,7 @@ export const Contact = ()=>{
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary focus:border-primary"
                 placeholder="Leave a comment..."
                 defaultValue={""}
-                style={{resize:"none"}}
+                style={{ resize: "none" }}
               />
             </div>
             <button

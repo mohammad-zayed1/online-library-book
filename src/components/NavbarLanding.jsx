@@ -2,9 +2,9 @@
 import { Link } from "react-router-dom";
 export const NavbarLanding = () => {
   return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
-        <div className="dropdown">
+    <div className="navbar bg-white shadow-lg z-10 sticky top-0">
+      <div className="navbar-start ">
+        <div className="dropdown text-black">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@ export const NavbarLanding = () => {
                   <a href="#pricing">Pricing</a>
                 </li>
                 <li>
-                  <a href="#contact">Contact Us</a>
+                  <Link to="/contact">Contact Us</Link>
                 </li>
               </ul>
             </li>
@@ -109,14 +109,17 @@ export const NavbarLanding = () => {
                 <a href="#pricing">Pricing</a>
               </li>
               <li>
-                <a href="#contact">Contact Us</a>
+                <Link to="/contact">Contact Us</Link>
               </li>
             </ul>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn bg-primary border-none outline-none text-white hover:bg-primary">
+        <Link
+          to="/login"
+          className="btn bg-primary border-none outline-none text-white hover:bg-[#458106]"
+        >
           Get started
         </Link>
       </div>
