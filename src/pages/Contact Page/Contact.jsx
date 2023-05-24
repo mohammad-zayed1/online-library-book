@@ -1,8 +1,11 @@
 
 
-
+import { NavbarLanding } from "../../components/NavbarLanding";
+import { Footer } from "../../components/Footer";
 export const Contact = ()=>{
     return (
+      <>
+      <NavbarLanding/>
       <section className="bg-white flex justify-center items-center dark:bg-gray-900 h-screen login-page-bg">
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md bg-white rounded-lg shadow-md">
           <h2 className="mb-4 text-4xl tracking-tight text-center text-primary dark:text-white">
@@ -68,5 +71,7 @@ export const Contact = ()=>{
           </form>
         </div>
       </section>
+      <Footer/>
+      </>
     );
 }

@@ -5,6 +5,7 @@ import { Quotes } from "./Quotes Section/Quotes";
 import { Pricing } from "./Pricing Section/Pricing"
 
 
+
 export const Main = ()=>{
     return (
       <>

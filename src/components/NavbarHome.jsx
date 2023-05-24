@@ -3,11 +3,11 @@ import Img from '../assets/img/moh.jpg';
 
 export const NavbarHome = ()=>{
     return (
-      <div className="navbar bg-base-100 fixed top-0 shadow-sm z-50">
+      <div className="navbar bg-base-100 fixed top-0 shadow-sm z-50 shadow-lg">
         <div className="flex-1">
           <a className="btn btn-ghost normal-case text-xl">Kitabk</a>
         </div>
-        <div className="flex-none">
+        <div className="flex-none mx-8 gap-5">
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
               <div className="indicator">

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
@@ -11,9 +12,9 @@ export const Hero = () => {
             &#34; I have always imagined that paradise will be a kind of
             library. &#34; - Jorge Luis Borges
           </p>
-          <a
-            href="#"
-            className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary hover:bg-[#458106] focus:ring-4 focus:ring-primary hover:translate-y-[-5px] transition-[0.3s]"
+          <Link
+            to="/login"
+            className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary hover:bg-[#458106] focus:ring-4 focus:ring-primary hover:translate-x-[10px] transition-[0.3s] "
           >
             Get started
             <svg
@@ -28,7 +29,7 @@ export const Hero = () => {
                 clipRule="evenodd"
               />
             </svg>
-          </a>
+          </Link>
         
         </div>
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex ">

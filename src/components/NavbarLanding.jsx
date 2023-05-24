@@ -26,45 +26,22 @@ export const NavbarLanding = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Home</a>
-            </li>
-            {/* <li>
-              <a href="#about">About Us</a>
-            </li> */}
-            <li>
-              <a href="#services">Services</a>
-            </li>
-            <li>
-              <a href="#categories">Categories</a>
+              <Link to="/">Home</Link>
             </li>
 
-            <li tabIndex={0}>
-              <a className="justify-between">
-                Other
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                </svg>
-              </a>
-              <ul className="p-2  bg-base-100 ">
-                <li>
-                  <a href="#authors">Authors</a>
-                </li>
-                <li>
-                  <a href="#quotes">Quotes</a>
-                </li>
-                <li>
-                  <a href="#pricing">Pricing</a>
-                </li>
-                <li>
-                  <Link to="/contact">Contact Us</Link>
-                </li>
-              </ul>
+            <li>
+              <Link to="/about">About Us</Link>
+            </li>
+
+            <li>
+              <Link to="/authors">Authors</Link>
+            </li>
+            <li>
+              <Link to="/quotes">Quotes</Link>
+            </li>
+
+            <li>
+              <Link to="/contact">Contact Us</Link>
             </li>
           </ul>
         </div>
@@ -73,45 +50,22 @@ export const NavbarLanding = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a href="#home">Home</a>
+            <Link to="/">Home</Link>
           </li>
 
-          {/* <li>
-            <a href="#about">About Us</a>
-          </li> */}
           <li>
-            <a href="#services">Services</a>
+            <Link to="/about">About Us</Link>
+          </li>
+
+          <li>
+            <Link to="/authors">Authors</Link>
           </li>
           <li>
-            <a href="#categories">Categories</a>
+            <Link to="/quotes">Quotes</Link>
           </li>
-          <li tabIndex={0}>
-            <a>
-              Other
-              <svg
-                className="fill-current"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-              >
-                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-              </svg>
-            </a>
-            <ul className="p-2 bg-white z-10">
-              <li>
-                <a href="#authors">Authors</a>
-              </li>
-              <li>
-                <a href="#quotes">Quotes</a>
-              </li>
-              <li>
-                <a href="#pricing">Pricing</a>
-              </li>
-              <li>
-                <Link to="/contact">Contact Us</Link>
-              </li>
-            </ul>
+
+          <li>
+            <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
       </div>

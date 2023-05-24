@@ -4,7 +4,7 @@
 
 export const  Authors = ()=>{
     return (
-      <section className="bg-white dark:bg-gray-900" id="authors">
+      <section className="bg-white background-cover-img" id="authors">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
           <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
@@ -16,8 +16,8 @@ export const  Authors = ()=>{
             </p> */}
           </div>
           <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-3">
-            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
+            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  hover:border-r-2 hover:border-neutral  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+              <a href="https://en.wikipedia.org/wiki/Ernest_Hemingway">
                 <img
                   className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/ErnestHemingway.jpg/220px-ErnestHemingway.jpg"
@@ -31,7 +31,7 @@ export const  Authors = ()=>{
                   </a>
                 </h3>
                 <span className="text-gray-500 dark:text-gray-400">
-                   author and journalist
+                  author and journalist
                 </span>
                 <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
                   His glorious contribution in the field fetched him the Nobel
@@ -40,14 +40,14 @@ export const  Authors = ()=>{
                 <div className="w-full text-right">
                   <a
                     className="hover:underline hover:text-primary"
-                    href="https://en.wikipedia.org/wiki/J._K._Rowling"
+                    href="https://en.wikipedia.org/wiki/Ernest_Hemingway"
                   >
                     Read More
                   </a>
                 </div>
               </div>
             </div>
-            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  hover:border-r-2 hover:border-neutral  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
                 <img
                   className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
@@ -78,7 +78,7 @@ export const  Authors = ()=>{
                 </div>
               </div>
             </div>
-            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  hover:border-r-2 hover:border-neutral  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="https://en.wikipedia.org/wiki/William_Shakespeare">
                 <img
                   className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
@@ -96,8 +96,9 @@ export const  Authors = ()=>{
                   Playwright, poet, actor
                 </span>
                 <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
-                  Michael drives the technical strategy of the flowbite platform
-                  and brand.
+                  was an English playwright, poet and actor. He is regarded as
+                  the greatest writer in the English language and the world#&29;s
+                  pre-eminent dramatist
                 </p>
                 <div className="w-full text-right">
                   <a
@@ -109,7 +110,7 @@ export const  Authors = ()=>{
                 </div>
               </div>
             </div>
-            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  hover:border-r-2 hover:border-neutral  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="https://en.wikipedia.org/wiki/George_Orwell">
                 <img
                   className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
@@ -140,7 +141,7 @@ export const  Authors = ()=>{
                 </div>
               </div>
             </div>
-            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  hover:border-r-2 hover:border-neutral  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="https://en.wikipedia.org/wiki/Charles_Dickens">
                 <img
                   className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
@@ -169,7 +170,7 @@ export const  Authors = ()=>{
                 </div>
               </div>
             </div>
-            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+            <div className="items-center hover:translate-y-[-5px] transition hover:shadow-2xl  hover:border-r-2 hover:border-neutral  bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
               <a href="https://en.wikipedia.org/wiki/Leo_Tolstoy">
                 <img
                   className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"

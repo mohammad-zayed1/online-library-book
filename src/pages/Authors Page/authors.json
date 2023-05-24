@@ -1,0 +1,74 @@
+ [
+    {
+        "name":"Ernest Hemingway",
+        "job":"author and journalist",
+        "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/ErnestHemingway.jpg/220px-ErnestHemingway.jpg",
+        "description":"His glorious contribution in the field fetched him the Nobel Prize of Literature in 1954.",
+        "link":"https://en.wikipedia.org/wiki/Ernest_Hemingway"
+    },
+    {
+        "name":"J. K. Rowling",
+        "job":" Author & philanthropist",
+        "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/J._K._Rowling_2010.jpg/220px-J._K._Rowling_2010.jpg",
+        "description":" J. K. Rowling, is a British author and philanthropist. She wrote Harry Potter.",
+        "link":"https://en.wikipedia.org/wiki/J._K._Rowling"
+    },
+    {
+      "name": "William Shakespeare",
+      "job": " Playwright, poet, actor",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Shakespeare.jpg/220px-Shakespeare.jpg",
+      "description": "was an English playwright, poet and actor. He is regarded as the greatest writer in the English language and the world's pre-eminent dramatist",
+      "link": "https://en.wikipedia.org/wiki/William_Shakespeare"
+    },
+    {
+      "name": "George Orwell",
+      "job": " Novelist, essayist, journalist",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/George_Orwell_press_photo.jpg/220px-George_Orwell_press_photo.jpg",
+      "description": "  His most famous works as a write include “Animal Farm”, “Homage to Catalonia” and “Nineteen Eighty Four Essays”.",
+      "link": "https://en.wikipedia.org/wiki/George_Orwell"
+    },
+    {
+      "name": " Charles Dickens",
+      "job": "Writer",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Dickens_Gurney_head.jpg/220px-Dickens_Gurney_head.jpg",
+      "description": " Featuring next on the list of top 10 writers in the world is the popular English writer, Charles Dickens.",
+      "link": "https://en.wikipedia.org/wiki/Charles_Dickens"
+    },
+    {
+      "name": " Leo Tolstoy",
+      "job": "  Writer, religious thinker",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/L.N.Tolstoy_Prokudin-Gorsky.jpg/220px-L.N.Tolstoy_Prokudin-Gorsky.jpg",
+      "description": " One of the best writers in the world is Leo Tolstoy, who was born in Russia in 1828.",
+      "link": "https://en.wikipedia.org/wiki/Leo_Tolstoy"
+    },
+    {
+      "name": "ANGIE THOMAS",
+      "job": "Writer",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Angie_Thomas_on_Valder_Beebe_Show_2019.jpg/220px-Angie_Thomas_on_Valder_Beebe_Show_2019.jpg",
+      "description": "Angie Thomas is a young adult author who is most well-known for her 2017 novel The Hate U Give.",
+      "link": "https://en.wikipedia.org/wiki/Angie_Thomas"
+    },
+    {
+      "name": "NEIL GAIMAN",
+      "job": "Author, comic book creator, screenwriter, voice actor",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Kyle-cassidy-neil-gaiman-April-2013.jpg/220px-Kyle-cassidy-neil-gaiman-April-2013.jpg",
+      "description": "Neil Gaiman is an author who writes across several genres, including short fiction, novels, comic books, graphic novels, nonfiction, and films",
+      "link": "https://en.wikipedia.org/wiki/Neil_Gaiman"
+    },
+    {
+      "name": "DAN BROWN",
+      "job": "Novelist",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Dan_Brown_bookjacket_cropped.jpg/220px-Dan_Brown_bookjacket_cropped.jpg",
+      "description": "Dan Brown writes thriller/mystery novels that explore conspiracy theories, cryptography, and art. Brown’s novels have sold over 200 million copies.",
+      "link": "https://en.wikipedia.org/wiki/Dan_Brown"
+    },
+    {
+      "name": "SARAH J. MAAS",
+      "job": "Author",
+      "image": "https://th.bing.com/th/id/OIP.QbdqJzCQfk2EEfrrDJwNJwHaE7?w=253&h=180&c=7&r=0&o=5&pid=1.7",
+      "description": "Sarah J. Maas. In fact, Maas is known for not one but two fantasy series, Throne of Glass and A Court of Thorns and Roses.",
+      "link": "https://en.wikipedia.org/wiki/Sarah_J._Maas"
+    }
+   
+   
+]
