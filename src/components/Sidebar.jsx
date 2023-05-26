@@ -1,6 +1,24 @@
 import "flowbite";
-
+import { useState } from "react";
+import { FaBook, FaUser, FaFolder } from "react-icons/fa";
+import { BookCard } from "../pages/Home Page/BookCard";
+import booksData from "../pages/Home Page/Books.json";
 export const Sidebar = () => {
+  const [type, setType] = useState("All");
+  const handleClick = (event) => {
+    setType(event.target.id);
+  };
+
+  const Books = booksData.map((book, index) => (
+    <BookCard
+      key={index}
+      name={book.name}
+      price={book.price}
+      rate={book.rate}
+      img={book.img}
+    />
+  ));
+
   return (
     <>
       <button
@@ -25,54 +43,34 @@ export const Sidebar = () => {
           />
         </svg>
       </button>
-    
+
       <aside
         id="sidebar-multi-level-sidebar"
-        className="fixed top-[68px] left-0 z-0 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        className="fixed top-[68px] left-0 z-0 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 "
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <div className="h-full px-3 py-4 overflow-y-auto bg-neutral dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             <li>
               <a
                 href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center p-2 text-white rounded-lg hover:bg-primary "
               >
-                <svg
-                  aria-hidden="true"
-                  className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-                </svg>
-                <span className="ml-3">Dashboard</span>
+                <FaUser />
+                <span className="ml-3">Profile</span>
               </a>
             </li>
+
             <li>
               <button
                 type="button"
-                className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                className="flex items-center w-full p-2 text-white transition duration-75 rounded-lg group hover:bg-gray-100 hover:text-black"
                 aria-controls="dropdown-example"
                 data-collapse-toggle="dropdown-example"
               >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <FaFolder />
                 <span className="flex-1 ml-3 text-left whitespace-nowrap">
-                  E-commerce
+                  Books categories
                 </span>
                 <svg
                   className="w-6 h-6"
@@ -87,29 +85,78 @@ export const Sidebar = () => {
                   />
                 </svg>
               </button>
-              <ul id="dropdown-example" className="hidden py-2 space-y-2 transition">
+              <ul
+                id="dropdown-example"
+                className="hidden py-2 space-y-2 transition"
+              >
                 <li>
                   <a
+                    onClick={handleClick}
                     href="#"
-                    className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    id="All"
+                    className="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-black dark:text-white dark:hover:bg-gray-700"
                   >
-                    Products
+                    All
                   </a>
                 </li>
                 <li>
                   <a
+                    onClick={handleClick}
                     href="#"
-                    className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    id="Fantasy"
+                    className="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-black dark:text-white dark:hover:bg-gray-700"
                   >
-                    Billing
+                    Fantasy
                   </a>
                 </li>
                 <li>
                   <a
+                    onClick={handleClick}
                     href="#"
-                    className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    id="Adventure"
+                    className="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-black dark:text-white dark:hover:bg-gray-700"
                   >
-                    Invoice
+                    Adventure
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={handleClick}
+                    href="#"
+                    id="Romance"
+                    className="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-black dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Romance
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={handleClick}
+                    href="#"
+                    id="Historical"
+                    className="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-black dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Historical
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={handleClick}
+                    href="#"
+                    id="Cooking"
+                    className="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-black dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Cooking
+                  </a>
+                </li>
+                <li>
+                  <a
+                    onClick={handleClick}
+                    href="#"
+                    id="Art & Photography"
+                    className="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 hover:text-black dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Art & Photography
                   </a>
                 </li>
               </ul>
@@ -117,132 +164,87 @@ export const Sidebar = () => {
             <li>
               <a
                 href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center p-2 text-white rounded-lg hover:bg-primary "
               >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Kanban</span>
-                <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                  Pro
-                </span>
+                <FaBook />
+
+                <span className="ml-3">My Books</span>
               </a>
             </li>
             <li>
               <a
                 href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center p-2 text-white rounded-lg hover:bg-primary "
               >
                 <svg
                   aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  className="w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z" />
-                  <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" />
+                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
                 </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Inbox</span>
-                <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                  3
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Products</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Sign In</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
+                <span className="ml-3">Dashboard</span>
               </a>
             </li>
           </ul>
         </div>
       </aside>
-     
+      <div className="p-4 sm:ml-64 mt-[60px]">
+        <div className="p-4  rounded-lg">
+          <div className="grid grid-cols-1 gap-4 mb-4">
+            <div className="flex items-center justify-evenly h-24 rounded bg-info">
+              <h1 className="text-2xl text-black font-bold p-2">
+                {" "}
+                Category : {type}
+              </h1>
+              <form className="w-[350px]">
+                <label
+                  htmlFor="default-search"
+                  className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                >
+                  Search
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg
+                      aria-hidden="true"
+                      className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    type="search"
+                    id="default-search"
+                    className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-success focus:border-primary"
+                    placeholder="Search..."
+                    required=""
+                  />
+                  <button
+                    type="submit"
+                    className="text-white absolute right-2.5 bottom-2.5 bg-primary hover:bg-[#458106] focus:ring-4 focus:outline-none focus:ring-success font-medium rounded-lg text-sm px-4 py-2 "
+                  >
+                    Search
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className="grid grid-cols-4 gap-4">{Books}</div>
+        </div>
+      </div>
     </>
   );
 };
