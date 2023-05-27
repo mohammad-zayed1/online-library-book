@@ -9,8 +9,9 @@ import { Contact } from './pages/Contact Page/Contact';
 import { Reset } from './pages/Reset Password/Reset';
 import { About } from './pages/About us Page/About';
 import { AuthorsPage } from './pages/Authors Page/Authors-Page';
-// import {Checkout} from './pages/Checkout Page/Checkout';
+import { Checkout } from './pages/Checkout Page/Checkout';
 import { QuotesPage } from './pages/Quotes Page/QuotesPage';
+import { Cart } from './pages/Cart Page/Cart';
 
 function App() {
    
@@ -29,8 +30,9 @@ function App() {
           <Route path="/reset" element={<Reset />} />
           <Route path="/about" element={<About />} />
           <Route path="/authors" element={<AuthorsPage />} />
-          {/* <Route path="/checkout" element={<Checkout />} /> */}
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/quotes" element={<QuotesPage />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </>

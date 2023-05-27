@@ -1,21 +1,66 @@
 import "flowbite";
-import { useState } from "react";
+import { CSSTransition } from "react-transition-group";
+
+import { useEffect, useState } from "react";
 import { FaBook, FaUser, FaFolder } from "react-icons/fa";
 import { BookCard } from "../pages/Home Page/BookCard";
 import booksData from "../pages/Home Page/Books.json";
+import '../pages/Home Page/home.css';
 export const Sidebar = () => {
   const [type, setType] = useState("All");
   const handleClick = (event) => {
     setType(event.target.id);
   };
 
+  // window.localStorage.clear()
+
+  // const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+  const [cart, setCart] = useState([]);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [total, setTotal] = useState(0); // Total price state
+
+  // Function to add a product to the cart
+  const addToCart = (product) => {
+    // Check if the product already exists in the cart
+    const existingProduct = cart.find((item) => item.id === product.id);
+
+    if (existingProduct) {
+      // If the product already exists, increase its count
+      const updatedCart = cart.map((item) =>
+        item.id === product.id ? { ...item, count: item.count + 1 } : item
+      );
+      setCart(updatedCart);
+    } else {
+      // If the product doesn't exist, add it to the cart with count 1
+      setCart([...cart, { ...product, count: 1 }]);
+    }
+
+    setShowSuccessMessage(true); // Show the success message
+    setTimeout(() => setShowSuccessMessage(false), 3000); // Hide the success message after 3 seconds
+  };
+  // Function to calculate the total price
+  const calculateTotal = () => {
+    const totalPrice = cart.reduce(
+      (acc, item) => acc + item.price * item.count,0
+      
+    );
+    setTotal(totalPrice);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    calculateTotal(); // Recalculate total price when cart changes
+    localStorage.setItem("price", JSON.stringify(total));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cart]);
+
   const Books = booksData.map((book, index) => (
     <BookCard
       key={index}
-      name={book.name}
-      price={book.price}
-      rate={book.rate}
-      img={book.img}
+      data={{ ...book }}
+      product={book}
+      addToCart={addToCart}
     />
   ));
 
@@ -195,7 +240,7 @@ export const Sidebar = () => {
       <div className="p-4 sm:ml-64 mt-[60px]">
         <div className="p-4  rounded-lg">
           <div className="grid grid-cols-1 gap-4 mb-4">
-            <div className="flex items-center justify-evenly h-24 rounded bg-info">
+            <div className="flex items-center justify-evenly  h-24 rounded bg-info">
               <h1 className="text-2xl text-black font-bold p-2">
                 {" "}
                 Category : {type}
@@ -242,7 +287,35 @@ export const Sidebar = () => {
               </form>
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-4">{Books}</div>
+          <div className="grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-center items-center  gap-4 ">
+            {Books}
+            {/* Success message */}
+            <CSSTransition
+              in={showSuccessMessage}
+              timeout={300}
+              classNames="success-message"
+              unmountOnExit
+            >
+              <div className="alert alert-success shadow-lg msg">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current flex-shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span>Added To Cart!</span>
+                </div>
+              </div>
+            </CSSTransition>
+          </div>
         </div>
       </div>
     </>
