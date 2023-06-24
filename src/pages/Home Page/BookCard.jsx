@@ -2,21 +2,13 @@
 
 import { useState } from "react";
 import books from "./Books.json";
+import { Link , useNavigate} from "react-router-dom";
 
 export const BookCard = ({data , product , addToCart}) => {
-//   const [item, setItem] = useState("");
-
-
-// const [items, setItems] = useState([]);
-
-
-// // const handleAddToCart = (product) => {
-// //    setItems([...items , product])
-   
-// // };
-
-// console.log(items)
-
+const navigate = useNavigate();
+const handleClick = (id)=>{
+navigate('/details')
+}
 
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-2xl hover:border-2 hover:border-solid hover:border-success transition ">
@@ -38,13 +30,22 @@ export const BookCard = ({data , product , addToCart}) => {
           <span className="text-3xl font-bold text-gray-900 dark:text-white">
             ${data.price}
           </span>
-          <button
-            id={data.id}
-            onClick={() => addToCart(product)}
-            className="text-white bg-primary hover:bg-[#458106] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Add to cart
-          </button>
+          <div className="flex gap-1">
+            <button
+              id={data.id}
+              className="text-white bg-neutral hover:bg-[#458106] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              onClick={()=>handleClick( data.id)}
+            >
+              Details
+            </button>
+            <button
+              id={data.id}
+              onClick={() => addToCart(product)}
+              className="text-white bg-primary hover:bg-[#458106] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Add to cart
+            </button>
+          </div>
         </div>
       </div>
     </div>

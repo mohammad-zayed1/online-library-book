@@ -94,17 +94,6 @@ return (
 
 
 
-
-
-
-
-
-
-
-
-
-
-
   return (
     <div className="flex flex-col h-screen ">
       <NavbarHome />
@@ -145,7 +134,7 @@ return (
                       Back
                     </button>
                     <Link
-                      to="/checkoutPage"
+                      to="/checkout"
                       className="block rounded bg-primary px-5 py-3 text-sm text-white transition hover:bg-[#458106]"
                     >
                       Checkout

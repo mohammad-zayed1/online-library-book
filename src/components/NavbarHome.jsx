@@ -1,11 +1,17 @@
 
 import { useEffect, useState } from 'react';
 import Img from '../assets/img/moh.jpg';
+import { Link } from 'react-router-dom';
 
 export const NavbarHome = ()=>{
   const [count, setCount] = useState(0);
   const [price , setPrice] = useState(0);
   
+
+  const handleLogout = ()=>{
+    localStorage.removeItem("token");
+    window.location.reload();
+  }
 
   return (
     <div className="navbar bg-base-100 fixed top-0 shadow-sm z-50 shadow-lg">
@@ -66,7 +72,7 @@ export const NavbarHome = ()=>{
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <Link onClick={handleLogout} to="/login">Logout</Link>
             </li>
           </ul>
         </div>
