@@ -8,8 +8,8 @@ router.post("/addorder", orderController.addOrder);
 // // update product
 // router.patch("/updateabout/:id", aboutController.updateAbout);
 
-// // get all products
-// router.get("/about", aboutController.showAbout);
+// get all orders
+router.get("/allorders",orderController.showOrder );
 
 router.get('/allorders/:id' , orderController.ordersForUser)
 module.exports = router;
