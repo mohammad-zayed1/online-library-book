@@ -91,6 +91,7 @@ export const Checkout = () => {
         quantity: count,
         total: total,
       });
+      navigate('/home');
     }).then(()=>{
     
       setUserData({
@@ -99,7 +100,7 @@ export const Checkout = () => {
       })
       setCart([]);
       setCount(0)
-      setRefresh(!refresh)
+      // setRefresh(!refresh)
 
     })
   };

@@ -50,7 +50,9 @@ export const Profile = () => {
         updateUser
       );
       setRefresh(!refresh);
+      
       handleSuccess('user info updated successfully');
+      setShow(false)
       
     } catch (err) {
       console.error(err.message);

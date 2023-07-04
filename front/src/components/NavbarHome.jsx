@@ -76,9 +76,7 @@ export const NavbarHome = (props)=>{
                 {/* <span className="badge">New</span> */}
               </Link>
             </li>
-            <li>
-              <a>Settings</a>
-            </li>
+           
             <li>
               <button onClick={props.logout} >Logout</button>
             </li>
