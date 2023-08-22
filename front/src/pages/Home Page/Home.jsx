@@ -20,6 +20,7 @@ export const Home = ()=>{
     email:"",
     status:"",
   });
+ 
 
   const {user , setUser} = useContext(CartContext)
   useEffect(() => {
@@ -58,7 +59,7 @@ export const Home = ()=>{
     return (
       <div className="flex flex-col">
         <NavbarHome logout = {Logout}/>
-        <Sidebar />
+        <Sidebar/>
         <ToastContainer />
       </div>
     );

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect , useMemo } from "react";
 import axios from "axios";
 // import books from "./Books.json";
 import { useNavigate } from "react-router-dom";
@@ -9,23 +9,12 @@ import { Loader } from "../../components/Loader";
 import {BsBagPlus} from 'react-icons/bs'
 import {GoInfo} from 'react-icons/go'
 
+
 export const BookCard = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [loader, setLoader] = useState(true);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:6600/allproducts")
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .then(() => {
-        setLoader(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+ 
 
   const navigate = useNavigate();
 
@@ -68,6 +57,9 @@ export const BookCard = ({ addToCart }) => {
       </svg>
     );
   });
+
+ 
+
     return (
       <div
         key={product._id}
