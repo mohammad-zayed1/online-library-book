@@ -22,7 +22,7 @@ export const Home = ()=>{
   });
  
 
-  const {user , setUser} = useContext(CartContext)
+  const {user } = useContext(CartContext)
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {

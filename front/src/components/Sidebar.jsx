@@ -3,46 +3,47 @@ import "flowbite";
 import { CartContext } from "../App";
 import { useEffect, useState, useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-// import { CSSTransition } from "react-transition-group";
 import { BiCategoryAlt } from "react-icons/bi";
-import { ImQuotesRight } from "react-icons/im";
-import { HiPencil } from "react-icons/hi";
-import { BookCard } from "../pages/Home Page/BookCard";
-import booksData from "../pages/Home Page/Books.json";
+
 import { Loader } from "./Loader";
 
-import {BsBagPlus} from 'react-icons/bs'
-import {GoInfo} from 'react-icons/go'
+import { BsBagPlus } from "react-icons/bs";
+import { GoInfo } from "react-icons/go";
 import "../pages/Home Page/home.css";
+import "./sidebar.css";
 import Pagination from "./Pagination";
 import "../utils/pagination.css";
-import axios from 'axios'
+import axios from "axios";
 
 let PageSize = 8;
-// let PageSize = 4;
 export const Sidebar = () => {
   const [type, setType] = useState("All");
   const [products, setProducts] = useState([]);
-  const [loader, setLoader] = useState(true);
+  const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
-  // const [page , setPage] = useState('books')
+
+  const handleClickDetails = (id) => {
+    navigate(`/details/${id}`);
+  };
   const handleClick = (event) => {
     setType(event.target.id);
   };
+  console.log("type:", type);
+  const { addToCart } = useContext(CartContext);
 
-  const { cart, setCart, total, setTotal, addToCart, calculateTotal } =
-    useContext(CartContext);
-
-    useEffect(() => {
-      axios
-        .get("http://localhost:6600/allproducts")
-        .then((response) => {
-          setProducts(response.data);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-    }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:6600/allproducts")
+      .then((response) => {
+        setLoader(true);
+        setProducts(response.data);
+      })
+      .then(() => setLoader(false))
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+  console.log("products:", products);
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -50,15 +51,9 @@ export const Sidebar = () => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return products.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage , products]);
+  }, [currentPage, products]);
 
-  const Books = currentTableData.map((product, index) => {
-    // <BookCard
-    //   key={index}
-    //   data={{ ...book }}
-    //   product={book}
-    //   addToCart={addToCart}
-    // />
+  const Books = currentTableData.map((product) => {
     let length = product.ratings;
     let length2 = 5 - length;
     const loopArray = Array.from({ length });
@@ -92,65 +87,64 @@ export const Sidebar = () => {
         </svg>
       );
     });
-  
-   
-  
-      return (
-        <div
-          key={product._id}
-          className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-2xl hover:border-2 hover:border-solid hover:border-success transition "
-        >
-          <a href="#" className="flex justify-center">
-            <img
-              className="p-8 rounded-t-lg"
-              src="https://th.bing.com/th/id/OIP.AuKe45hzeut0bmsMuslmQQDuEs?w=143&h=180&c=7&r=0&o=5&pid=1.7"
-              alt="product image"
-            />
+
+    return (
+      <div
+        key={product._id}
+        className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-2xl hover:border-2 hover:border-solid hover:border-success transition "
+      >
+        <a href="#" className="flex justify-center">
+          <img
+            className="p-8 rounded-t-lg"
+            src="https://th.bing.com/th/id/OIP.AuKe45hzeut0bmsMuslmQQDuEs?w=143&h=180&c=7&r=0&o=5&pid=1.7"
+            alt="product image"
+          />
+        </a>
+        <div className="px-5 pb-5">
+          <a href="#">
+            <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+              {product.name}
+            </h5>
           </a>
-          <div className="px-5 pb-5">
-            <a href="#">
-              <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                {product.name}
-              </h5>
-            </a>
-            <div className="flex items-center mt-2.5 mb-5">
-              <span className="flex text-blue-800 text-xs font-semibold mr-2  py-0.5 rounde ">
-                {fillStar}
-                {unFillStar}
-              </span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                ${product.price}
-              </span>
-              {product.quantity > 0 ? (
-                <div className="flex gap-1">
-                  <button
-                    id={product._id}
-                    data-tip="Details"
-                    className="text-white tooltip bg-neutral hover:bg-[#222353] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    onClick={() => handleClick(product._id)}
-                  >
-                    <GoInfo className="text-white font-bold text-xl"/>
-                  </button>
-                  <button
-                    id={product._id}
-                    data-tip="Add to Cart"
-                    onClick={() => addToCart(product)}
-                    className="text-white tooltip tooltip-primary  bg-primary hover:bg-[#458106] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    <BsBagPlus className="text-white font-bold text-xl"/>
-                  </button>
-                </div>
-              ) : (
-                <div className="text-xl">Out of The Stock</div>
-              )}
-            </div>
+          <span> {product.category}</span>
+          <div className="flex items-center mt-2.5 mb-5">
+            <span className="flex text-blue-800 text-xs font-semibold mr-2  py-0.5 rounde ">
+              {fillStar}
+              {unFillStar}
+            </span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-3xl font-bold text-gray-900 dark:text-white">
+              ${product.price}
+            </span>
+            {product.quantity > 0 ? (
+              <div className="flex gap-1">
+                <button
+                  id={product._id}
+                  data-tip="Details"
+                  className="text-white tooltip bg-neutral hover:bg-[#222353] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  onClick={() => handleClickDetails(product._id)}
+                >
+                  <GoInfo className="text-white font-bold text-xl" />
+                </button>
+                <button
+                  id={product._id}
+                  data-tip="Add to Cart"
+                  onClick={() => addToCart(product)}
+                  className="text-white tooltip tooltip-primary  bg-primary hover:bg-[#458106] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  <BsBagPlus className="text-white font-bold text-xl" />
+                </button>
+              </div>
+            ) : (
+              <div className="text-xl">Out of The Stock</div>
+            )}
           </div>
         </div>
-      );
-              });
-console.log("books" , Books);
+      </div>
+    );
+  });
+  console.log("books", Books);
   return (
     <>
       <button
@@ -183,25 +177,6 @@ console.log("books" , Books);
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-primary shadow-2xl z-[50] ">
           <ul className="space-y-2 font-medium">
-            <li>
-              <button
-                onClick={() => navigate("/authors")}
-                className="flex items-center w-full gap-1 p-2 text-white transition duration-75 rounded-lg  group hover:bg-white hover:text-primary pl-2   text-[18px]"
-              >
-                <HiPencil />
-                Authors
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => navigate("/quotes")}
-                className="flex items-center w-full p-2 gap-2 text-white transition duration-75 rounded-lg  group hover:bg-white hover:text-primary pl-2   text-[18px]"
-              >
-                <ImQuotesRight />
-                Quotes
-              </button>
-            </li>
-
             <li>
               <h1 className="flex items-center w-full p-2 gap-1  text-white transition duration-75 rounded-lg pl-2 group text-[18px]">
                 <BiCategoryAlt />
@@ -275,7 +250,7 @@ console.log("books" , Books);
         </div>
       </aside>
       <div className="p-4 sm:ml-64 mt-[60px]">
-        <div className="p-4  rounded-lg">
+        <div className="p-4  rounded-lg ">
           <div className="grid grid-cols-1 gap-4 mb-4">
             <div className="flex items-center justify-evenly  h-24 rounded ">
               <form className="w-96">
@@ -313,18 +288,22 @@ console.log("books" , Books);
               </form>
             </div>
           </div>
-          <div className="flex flex-col w-full">
-            <div className="grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-center items-center  gap-4">
-              {Books}
+          {loader ? (
+            <Loader />
+          ) : (
+            <div className="flex flex-col w-full">
+              <div className="grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-center items-center  gap-4">
+                {Books}
+              </div>
+              <Pagination
+                className="pagination-bar mt-5 self-center"
+                currentPage={currentPage}
+                totalCount={products.length}
+                pageSize={PageSize}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
             </div>
-            <Pagination
-              className="pagination-bar mt-5 self-center"
-              currentPage={currentPage}
-              totalCount={products.length}
-              pageSize={PageSize}
-              onPageChange={(page) => setCurrentPage(page)}
-            />
-          </div>
+          )}
         </div>
       </div>
     </>

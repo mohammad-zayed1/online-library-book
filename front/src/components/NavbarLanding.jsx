@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { NavLink , Link } from "react-router-dom";
 export const NavbarLanding = () => {
   return (
     <div className="navbar bg-white shadow-lg z-10 sticky top-0">
@@ -45,27 +45,30 @@ export const NavbarLanding = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Kitabk</a>
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <img src="../../public/logo-2-removebg-preview.png" className="w-[70px] h-[40px]" />
+          Kitabk
+          </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
 
           <li>
-            <Link to="/about">About Us</Link>
+            <NavLink to="/about">About Us</NavLink>
           </li>
 
           <li>
-            <Link to="/authors">Authors</Link>
+            <NavLink to="/authors">Authors</NavLink>
           </li>
           <li>
-            <Link to="/quotes">Quotes</Link>
+            <NavLink to="/quotes">Quotes</NavLink>
           </li>
 
           <li>
-            <Link to="/contact">Contact Us</Link>
+            <NavLink to="/contact">Contact Us</NavLink>
           </li>
         </ul>
       </div>
