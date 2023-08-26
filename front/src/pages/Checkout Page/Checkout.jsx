@@ -10,7 +10,7 @@ import { NavbarHome } from "../../components/NavbarHome";
 import { CartContext } from "../../App";
 
 export const Checkout = () => {
-  const { cart , setCart,  total , calculateCount , count , setCount ,refresh,setRefresh} =
+  const { cart , setCart,  total , calculateCount , count , setCount} =
     useContext(CartContext);
   // const [items, setItems] = useState(JSON.parse(localStorage.getItem("cart")));
   // const [total, setTotal] = useState(0);
@@ -19,7 +19,7 @@ export const Checkout = () => {
   const [cookies, removeCookie] = useCookies([]);
  
 
-  const [username, setUsername] = useState("");
+  const [, setUsername] = useState("");
   const [userData, setUserData] = useState({
     userID: "",
     customerName: "",
@@ -76,7 +76,7 @@ export const Checkout = () => {
       confirmButtonText: "Yes, Confirm Payment",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Confirmed!", "Your Payment has been canceled.", "success");
+        Swal.fire("Confirmed!", "Your Payment has been confiremd successfully.", "success");
       }
        calculateCount();
       const { userID, customerName } = userData;
@@ -111,10 +111,7 @@ export const Checkout = () => {
       [name]: value,
     }));
   };
-  console.log("count", count);
-  console.log('cart' , cart)
-
-  console.log("info", info);
+ 
 
   return (
     <>
@@ -170,6 +167,7 @@ export const Checkout = () => {
                     name="card-number"
                     maxLength={14}
                     minLength={14}
+                  
                     placeholder="1234-5678-XXXX-XXXX"
                     className="form-input pr-10 w-full block shadow-sm rounded border-gray-300 bg-gray-50 text-sm placeholder-gray-300 focus:border-primary focus:ring-1 focus:ring-primary"
                   />
@@ -198,6 +196,7 @@ export const Checkout = () => {
                         maxLength={2}
                         minLength={1}
                         placeholder="month"
+                      
                         className="form-input w-36 block shadow-sm rounded border-gray-300 bg-gray-50 text-sm placeholder-gray-300 focus:border-primary focus:ring-1 focus:ring-primary"
                       />
                     </div>
@@ -217,8 +216,9 @@ export const Checkout = () => {
                         minLength={4}
                         className="form-input w-36 block shadow-sm rounded border-gray-300 bg-gray-50 text-sm placeholder-gray-300 focus:border-primary focus:ring-1 focus:ring-primary"
                       />
-                    </div>
 
+                    </div>
+  
                     {/* ::::security code */}
                     <div className="my-1 relative">
                       <label
@@ -325,8 +325,8 @@ export const Checkout = () => {
                     {/* ::::item infos */}
                     <div className="inline-flex">
                       <img
-                        src="https://th.bing.com/th/id/OIP.AuKe45hzeut0bmsMuslmQQDuEs?w=143&h=180&c=7&r=0&o=5&pid=1.7"
-                        alt=""
+                        src={item.img}
+                        alt={item.name}
                         className="max-h-16"
                       />
                       <div className="ml-3">

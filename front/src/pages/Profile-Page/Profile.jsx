@@ -1,7 +1,7 @@
-import {  useState, useContext} from "react";
-import axios from "axios";
+import { useState, useContext } from "react";
 import { useCookies } from "react-cookie";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { Footer } from "../../components/Footer";
 import { NavbarHome } from "../../components/NavbarHome";
@@ -9,12 +9,12 @@ import { RiEditBoxFill } from "react-icons/ri";
 import { MdOutlineCancel } from "react-icons/md";
 import { CartContext } from "../../App";
 import { ToastContainer, toast } from "react-toastify";
-import {TableOfOrders} from './TableOfOrders';
+import { TableOfOrders } from "./TableOfOrders";
 
-import userImg from "../../assets/img/user.png"
+import userImg from "../../assets/img/user.png";
 export const Profile = () => {
-    const [cookies, removeCookie] = useCookies([]);
-    const navigate = useNavigate();
+  const [, removeCookie] = useCookies([]);
+  const navigate = useNavigate();
 
   const { user, setRefresh, refresh } = useContext(CartContext);
   const [show, setShow] = useState(false);
@@ -23,13 +23,13 @@ export const Profile = () => {
   });
   console.log("updateUser", updateUser);
   const handleSuccess = (msg) =>
-  toast.success(msg, {
-    position: "top-right",
-  });
+    toast.success(msg, {
+      position: "top-right",
+    });
   const handleError = (err) =>
-  toast.error(err, {
-    position: "top-right",
-  });
+    toast.error(err, {
+      position: "top-right",
+    });
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUpdateUser((prev) => ({
@@ -50,10 +50,9 @@ export const Profile = () => {
         updateUser
       );
       setRefresh(!refresh);
-      
-      handleSuccess('user info updated successfully');
-      setShow(false)
-      
+
+      handleSuccess("user info updated successfully");
+      setShow(false);
     } catch (err) {
       console.error(err.message);
       handleError(err.message);
@@ -61,7 +60,7 @@ export const Profile = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen login-page-bg">
       <NavbarHome logout={Logout} />
       <div className="grow mt-28 mb-10  flex flex-col justify-center items-center">
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -131,9 +130,9 @@ export const Profile = () => {
             )}
           </div>
         </div>
-        <TableOfOrders userId={user.id}/>
+        <TableOfOrders userId={user.id} />
       </div>
-      <ToastContainer/>
+      <ToastContainer />
       <Footer />
     </div>
   );

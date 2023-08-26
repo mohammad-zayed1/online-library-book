@@ -1,30 +1,24 @@
 /* eslint-disable react/prop-types */
 
-import {useState , useContext , useEffect } from 'react';
-import Img from '../assets/img/moh.jpg';
-import { Link ,useNavigate } from 'react-router-dom';
-import { CartContext } from '../App'; 
-export const NavbarHome = (props)=>{
-  // const [count, setCount] = useState(0);
-  // const [price , setPrice] = useState(0);
+import { useContext } from "react";
+import img from "../assets/img/user.png";
+import { Link, useNavigate } from "react-router-dom";
+import { CartContext } from "../App";
+export const NavbarHome = (props) => {
+
   const navigate = useNavigate();
 
-  const { total , count} = useContext(CartContext);
+  const { total, count } = useContext(CartContext);
 
-  // useEffect(()=>{
-  //    const data = JSON.parse(window.localStorage.getItem('cart'));
-  //      const noProducts = data?.reduce(
-  //     (acc, item) => acc + item.count ,0
-      
-  //   );
-  //   setCount(noProducts);
-  // console.log("data" , data);
-  // },[total , cart])
+ 
 
   return (
     <div className="navbar bg-base-100 fixed top-0  z-20 shadow-md">
       <div className="flex-1">
-        <Link to="/home"  className="btn btn-ghost normal-case text-xl">Kitabk</Link>
+        <Link to="/home" className="btn btn-ghost normal-case text-xl">
+          <img src="../../public/logo-2-removebg-preview.png" className="w-[70px] h-[40px]" />
+          Kitabk
+        </Link>
       </div>
       <div className="flex-none mx-8 gap-5">
         <div className="dropdown dropdown-end">
@@ -55,7 +49,12 @@ export const NavbarHome = (props)=>{
               <span className="font-bold text-lg">Total Items : {count}</span>
               <span className="text-black">Subtotal: ${total}</span>
               <div className="card-actions">
-                <button onClick={()=> navigate('/cart')} className="btn btn-primary btn-block">View cart</button>
+                <button
+                  onClick={() => navigate("/cart")}
+                  className="btn btn-primary btn-block"
+                >
+                  View cart
+                </button>
               </div>
             </div>
           </div>
@@ -63,7 +62,7 @@ export const NavbarHome = (props)=>{
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src={Img} />
+              <img src={img} />
             </div>
           </label>
           <ul
@@ -71,18 +70,18 @@ export const NavbarHome = (props)=>{
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to='/profile' className="justify-between">
+              <Link to="/profile" className="justify-between">
                 Profile
                 {/* <span className="badge">New</span> */}
               </Link>
             </li>
-           
+
             <li>
-              <button onClick={props.logout} >Logout</button>
+              <button onClick={props.logout}>Logout</button>
             </li>
           </ul>
         </div>
       </div>
     </div>
   );
-}
+};
