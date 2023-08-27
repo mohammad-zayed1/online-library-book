@@ -20,38 +20,43 @@ export const Sidebar = () => {
   const [type, setType] = useState("All");
   const [products, setProducts] = useState([]);
   const [loader, setLoader] = useState(false);
+  // const [refresh, setRefresh] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { addToCart } = useContext(CartContext);
   const navigate = useNavigate();
 
-  const handleClickDetails = (id) => {
-    navigate(`/details/${id}`);
-  };
-  const handleClick = (event) => {
-    setType(event.target.id);
-  };
-  console.log("type:", type);
-  const { addToCart } = useContext(CartContext);
-
   useEffect(() => {
+    setLoader(true);
     axios
       .get("http://localhost:6600/allproducts")
       .then((response) => {
-        setLoader(true);
         setProducts(response.data);
       })
       .then(() => setLoader(false))
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
-  console.log("products:", products);
-
-  const [currentPage, setCurrentPage] = useState(1);
+  }, [type]);
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return products.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, products]);
+
+  const handleClickDetails = (id) => {
+    navigate(`/details/${id}`);
+  };
+  const handleClick = (event) => {
+    setType(event.target.id);
+    filterItems();
+  };
+
+  function filterItems() {
+    setProducts((items) =>
+      type === "All" ? items : items.filter((item) => item.category === type)
+    );
+  }
 
   const Books = currentTableData.map((product) => {
     let length = product.ratings;
@@ -195,7 +200,7 @@ export const Sidebar = () => {
             <li>
               <button
                 onClick={handleClick}
-                id="Fantasy"
+                id="fantasy"
                 className="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-5 group hover:bg-white hover:text-primary"
               >
                 Fantasy
@@ -231,7 +236,7 @@ export const Sidebar = () => {
             <li>
               <button
                 onClick={handleClick}
-                id="Cooking"
+                id="cooking"
                 className="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-5 group hover:bg-white hover:text-primary"
               >
                 Cooking

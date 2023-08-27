@@ -38,9 +38,9 @@ const readMessage = async (req, res) => {
       }
     );
 
-    res.status(201).json("quote updated successfully ");
+    res.status(201).json("contact meessage updated successfully ");
   } catch (error) {
-    res.status(500).json({ error: "Failed to update quote" });
+    res.status(500).json({ error: "Failed to update contact message" });
   }
 };
 

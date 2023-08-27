@@ -35,6 +35,7 @@ app.use(aboutRouter);
 app.use(writerRouter);
 app.use(authRoute);
 app.use(orderRoute);
+app.use(contactRoute)
 
 module.exports = {
   server: app,
